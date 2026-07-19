@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — BULLION WIRE</title>
+<style>
+  :root{
+    --ink:#0b0c0e; --panel:#17191d; --line:#2a2c31;
+    --paper:#ede8dd; --paper-dim:#a9a496; --gold:#c9a227; --gold-bright:#e8c455;
+    --bronze:#8c6b3f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  body{background:var(--ink); color:var(--paper); font-family:'Newsreader', Georgia, serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .masthead{max-width:1240px; margin:0 auto; padding:24px 32px 18px; display:flex; align-items:flex-end; justify-content:space-between; border-bottom:2px solid var(--gold); flex-wrap:wrap; gap:16px;}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .ingot{width:34px; height:27px; background:linear-gradient(135deg, var(--gold-bright), var(--bronze) 70%); clip-path:polygon(8% 0, 92% 0, 100% 100%, 0% 100%);}
+  .brand h1{font-size:28px; font-weight:700; line-height:1;}
+  .brand h1 em{font-style:normal; color:var(--gold);}
+  nav{display:flex; gap:24px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--paper-dim);}
+  nav a:hover{color:var(--gold-bright);}
+
+  .wrap{max-width:760px; margin:0 auto; padding:50px 32px 80px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;}
+  h2{font-size:40px; font-weight:700; margin-bottom:24px; line-height:1.15;}
+  .lede{font-size:19px; line-height:1.6; color:#cfc9ba; margin-bottom:36px;}
+
+  .body-copy{font-size:17px; line-height:1.75; color:#e4dfd1;}
+  .body-copy p{margin-bottom:22px;}
+  .body-copy h3{font-size:22px; font-weight:600; margin:36px 0 14px; color:var(--paper);}
+
+  .values{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); margin:36px 0;}
+  .value-item{padding:22px 24px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .value-item:nth-child(2n){border-right:none;}
+  .value-item h4{font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
+  .value-item p{font-size:14.5px; color:#b9b3a4; line-height:1.5;}
+
+  footer{border-top:1px solid var(--line); padding:30px 32px; max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--paper-dim);}
+
+  @media (max-width:900px){
+    nav{display:none;}
+    h2{font-size:30px;}
+    .values{grid-template-columns:1fr;}
+    .value-item{border-right:none;}
+  }
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="brand">
+    <div class="ingot"></div>
+    <div><h1>BULLION <em>WIRE</em></h1></div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="category.html">Spot &amp; Futures</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="eyebrow">About Us</div>
+  <h2>Independent coverage of the gold market, built for traders who need the signal without the noise.</h2>
+  <p class="lede">Bullion Wire tracks spot prices, futures positioning, central bank activity, and the macro forces that move gold — published daily for traders, investors, and anyone following the metal closely.</p>
+
+  <div class="body-copy">
+    <h3>What we cover</h3>
+    <p>Our reporting spans four areas: spot and futures pricing, central bank reserve activity, technical analysis, and the physical market — from ETF flows to jewelry demand across major consuming regions. Each piece is written to be read in a few minutes, with the context traders actually need to make sense of a move.</p>
+
+    <h3>Our approach</h3>
+    <p>We aim for clear, direct market reporting — no hype, no exaggerated calls, and no sponsored positions dressed up as analysis. Prices and data referenced across the site are sourced from public market data and updated regularly.</p>
+
+    <div class="values">
+      <div class="value-item">
+        <h4>Independence</h4>
+        <p>No affiliation with any brokerage, fund, or bullion dealer.</p>
+      </div>
+      <div class="value-item">
+        <h4>Clarity</h4>
+        <p>Market moves explained in plain language, without unnecessary jargon.</p>
+      </div>
+      <div class="value-item">
+        <h4>Consistency</h4>
+        <p>New coverage published on a regular schedule, not just when prices spike.</p>
+      </div>
+      <div class="value-item">
+        <h4>Accountability</h4>
+        <p>Corrections are made openly when we get something wrong.</p>
+      </div>
+    </div>
+
+    <h3>Get in touch</h3>
+    <p>Questions, tips, or feedback on our coverage — reach out through our <a href="contact.html" style="color:var(--gold-bright); text-decoration:underline;">contact page</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Bullion Wire. Market data is illustrative and delayed.</span>
+  <span>Not investment advice.</span>
+</footer>
+
+</body>
+</html>
