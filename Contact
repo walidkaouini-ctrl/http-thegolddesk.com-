@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — BULLION WIRE</title>
+<style>
+  :root{
+    --ink:#0b0c0e; --panel:#17191d; --line:#2a2c31;
+    --paper:#ede8dd; --paper-dim:#a9a496; --gold:#c9a227; --gold-bright:#e8c455;
+    --bronze:#8c6b3f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  body{background:var(--ink); color:var(--paper); font-family:'Newsreader', Georgia, serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .masthead{max-width:1240px; margin:0 auto; padding:24px 32px 18px; display:flex; align-items:flex-end; justify-content:space-between; border-bottom:2px solid var(--gold); flex-wrap:wrap; gap:16px;}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .ingot{width:34px; height:27px; background:linear-gradient(135deg, var(--gold-bright), var(--bronze) 70%); clip-path:polygon(8% 0, 92% 0, 100% 100%, 0% 100%);}
+  .brand h1{font-size:28px; font-weight:700; line-height:1;}
+  .brand h1 em{font-style:normal; color:var(--gold);}
+  nav{display:flex; gap:24px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--paper-dim);}
+  nav a:hover{color:var(--gold-bright);}
+
+  .wrap{max-width:640px; margin:0 auto; padding:50px 32px 80px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;}
+  h2{font-size:38px; font-weight:700; margin-bottom:16px;}
+  .lede{font-size:17px; line-height:1.6; color:#cfc9ba; margin-bottom:40px;}
+
+  .contact-block{display:flex; gap:16px; padding:20px 0; border-bottom:1px solid var(--line);}
+  .contact-block h4{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold); margin-bottom:6px;}
+  .contact-block p{font-size:15.5px; color:#e4dfd1; line-height:1.5;}
+
+  form{margin-top:40px;}
+  label{display:block; font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:8px;}
+  input, textarea{
+    width:100%; background:var(--panel); border:1px solid var(--line); color:var(--paper);
+    padding:12px 14px; font-family:'Newsreader', Georgia, serif; font-size:15px; margin-bottom:20px;
+  }
+  textarea{min-height:130px; resize:vertical;}
+  input:focus, textarea:focus{outline:none; border-color:var(--gold);}
+  button{
+    background:var(--gold); color:var(--ink); border:none; padding:13px 28px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    font-weight:600; cursor:pointer;
+  }
+  button:hover{background:var(--gold-bright);}
+  .note{font-size:12px; color:var(--paper-dim); margin-top:14px;}
+
+  footer{border-top:1px solid var(--line); padding:30px 32px; max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--paper-dim);}
+
+  @media (max-width:900px){ nav{display:none;} h2{font-size:28px;} }
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="brand">
+    <div class="ingot"></div>
+    <div><h1>BULLION <em>WIRE</em></h1></div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="category.html">Spot &amp; Futures</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <h2>Get in touch</h2>
+  <p class="lede">Have a question, a correction, or a story tip? Send us a message and we'll get back to you.</p>
+
+  <div class="contact-block">
+    <div>
+      <h4>Editorial</h4>
+      <p>Story tips, corrections, and press inquiries.</p>
+    </div>
+  </div>
+  <div class="contact-block">
+    <div>
+      <h4>General</h4>
+      <p>Any other questions about Bullion Wire.</p>
+    </div>
+  </div>
+
+  <form onsubmit="event.preventDefault(); alert('Thanks — this is a demo form. Connect it to a form handler like Netlify Forms or Formspree to receive real messages.');">
+    <label for="name">Name</label>
+    <input id="name" type="text" placeholder="Your name" required>
+
+    <label for="email">Email</label>
+    <input id="email" type="email" placeholder="you@example.com" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="What's on your mind?" required></textarea>
+
+    <button type="submit">Send message</button>
+    <div class="note">We typically respond within 2–3 business days.</div>
+  </form>
+</div>
+
+<footer>
+  <span>© 2026 Bullion Wire. Market data is illustrative and delayed.</span>
+  <span>Not investment advice.</span>
+</footer>
+
+</body>
+</html>
