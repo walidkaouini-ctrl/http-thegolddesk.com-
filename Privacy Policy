@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — BULLION WIRE</title>
+<style>
+  :root{
+    --ink:#0b0c0e; --panel:#17191d; --line:#2a2c31;
+    --paper:#ede8dd; --paper-dim:#a9a496; --gold:#c9a227; --gold-bright:#e8c455;
+    --bronze:#8c6b3f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  body{background:var(--ink); color:var(--paper); font-family:'Newsreader', Georgia, serif; -webkit-font-smoothing:antialiased;}
+  a{color:var(--gold-bright);}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .masthead{max-width:1240px; margin:0 auto; padding:24px 32px 18px; display:flex; align-items:flex-end; justify-content:space-between; border-bottom:2px solid var(--gold); flex-wrap:wrap; gap:16px;}
+  .brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:inherit;}
+  .ingot{width:34px; height:27px; background:linear-gradient(135deg, var(--gold-bright), var(--bronze) 70%); clip-path:polygon(8% 0, 92% 0, 100% 100%, 0% 100%);}
+  .brand h1{font-size:28px; font-weight:700; line-height:1;}
+  .brand h1 em{font-style:normal; color:var(--gold);}
+  nav{display:flex; gap:24px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--paper-dim);}
+  nav a{text-decoration:none; color:inherit;}
+  nav a:hover{color:var(--gold-bright);}
+
+  .wrap{max-width:760px; margin:0 auto; padding:50px 32px 80px;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px;}
+  h2{font-size:36px; font-weight:700; margin-bottom:10px;}
+  .updated{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--paper-dim); margin-bottom:36px;}
+
+  .body-copy{font-size:16px; line-height:1.75; color:#e4dfd1;}
+  .body-copy h3{font-size:20px; font-weight:600; margin:32px 0 12px; color:var(--paper);}
+  .body-copy p{margin-bottom:16px;}
+  .body-copy ul{margin:0 0 16px 22px;}
+  .body-copy li{margin-bottom:8px;}
+
+  footer{border-top:1px solid var(--line); padding:30px 32px; max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--paper-dim);}
+
+  @media (max-width:900px){ nav{display:none;} h2{font-size:28px;} }
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <a href="index.html" class="brand">
+    <div class="ingot"></div>
+    <div><h1>BULLION <em>WIRE</em></h1></div>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="category.html">Spot &amp; Futures</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</div>
+
+<div class="wrap">
+  <div class="eyebrow">Legal</div>
+  <h2>Privacy Policy</h2>
+  <div class="updated">Last updated: July 2026</div>
+
+  <div class="body-copy">
+    <p>This Privacy Policy explains how Bullion Wire ("we," "us," "our") collects, uses, and protects information when you visit this website.</p>
+
+    <h3>Information we collect</h3>
+    <p>We may collect basic technical information automatically when you visit, including your IP address, browser type, device information, and pages viewed. If you submit our contact form, we collect the name, email address, and message you provide.</p>
+
+    <h3>Cookies and advertising</h3>
+    <p>This site may use cookies and similar technologies, including those served by third-party advertising partners such as Google AdSense, to display ads and measure their performance. Google and its partners may use cookies to serve ads based on your prior visits to this or other websites.</p>
+    <ul>
+      <li>You can opt out of personalized advertising by visiting Google's <a href="https://adssettings.google.com" target="_blank" rel="noopener">Ads Settings</a>.</li>
+      <li>You can also opt out of third-party vendor use of cookies by visiting <a href="https://www.aboutads.info" target="_blank" rel="noopener">aboutads.info</a>.</li>
+    </ul>
+
+    <h3>How we use information</h3>
+    <p>We use collected information to operate and improve the site, respond to inquiries submitted through our contact form, and understand aggregate traffic patterns. We do not sell personal information to third parties.</p>
+
+    <h3>Third-party links</h3>
+    <p>Our site may link to external sites, including market data providers and news sources. We are not responsible for the privacy practices of those third-party sites.</p>
+
+    <h3>Data retention</h3>
+    <p>Contact form submissions are retained only as long as needed to respond to your inquiry.</p>
+
+    <h3>Your rights</h3>
+    <p>Depending on your location, you may have rights to access, correct, or request deletion of your personal information. Contact us via our <a href="contact.html">contact page</a> to make such a request.</p>
+
+    <h3>Changes to this policy</h3>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+
+    <h3>Contact</h3>
+    <p>Questions about this policy can be sent through our <a href="contact.html">contact page</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Bullion Wire. Market data is illustrative and delayed.</span>
+  <span>Not investment advice.</span>
+</footer>
+
+</body>
+</html>
