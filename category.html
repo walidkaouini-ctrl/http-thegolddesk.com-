@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spot &amp; Futures — BULLION WIRE</title>
+<style>
+  :root{
+    --ink:#0b0c0e; --panel:#17191d; --line:#2a2c31;
+    --paper:#ede8dd; --paper-dim:#a9a496; --gold:#c9a227; --gold-bright:#e8c455;
+    --bronze:#8c6b3f; --up:#5fbf7a; --down:#d9694f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  body{background:var(--ink); color:var(--paper); font-family:'Newsreader', Georgia, serif; -webkit-font-smoothing:antialiased;}
+  a{color:inherit; text-decoration:none;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  .masthead{max-width:1240px; margin:0 auto; padding:24px 32px 18px; display:flex; align-items:flex-end; justify-content:space-between; border-bottom:2px solid var(--gold); flex-wrap:wrap; gap:16px;}
+  .brand{display:flex; align-items:center; gap:14px;}
+  .ingot{width:34px; height:27px; background:linear-gradient(135deg, var(--gold-bright), var(--bronze) 70%); clip-path:polygon(8% 0, 92% 0, 100% 100%, 0% 100%);}
+  .brand h1{font-size:28px; font-weight:700; line-height:1;}
+  .brand h1 em{font-style:normal; color:var(--gold);}
+  nav{display:flex; gap:24px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--paper-dim);}
+  nav a:hover{color:var(--gold-bright);}
+
+  .page-head{max-width:1240px; margin:0 auto; padding:40px 32px 20px; border-bottom:1px solid var(--line);}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;}
+  .page-head h2{font-size:38px; font-weight:700;}
+  .page-head p{color:#b9b3a4; font-size:15px; margin-top:10px; max-width:60ch;}
+
+  .layout{max-width:1240px; margin:0 auto; padding:36px 32px 60px; display:grid; grid-template-columns:1fr 300px; gap:44px;}
+
+  .list-item{display:grid; grid-template-columns:110px 1fr; gap:20px; padding:22px 0; border-bottom:1px solid var(--line);}
+  .list-item .thumb{background:linear-gradient(135deg, var(--panel), var(--bronze) 180%); height:78px; border:1px solid var(--line);}
+  .list-item .tag{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); margin-bottom:8px;}
+  .list-item h4{font-size:19px; font-weight:600; line-height:1.3; margin-bottom:8px;}
+  .list-item h4:hover{color:var(--gold-bright);}
+  .list-item p{font-size:14px; color:#b9b3a4; line-height:1.5; margin-bottom:8px;}
+  .list-item .meta{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--paper-dim);}
+
+  .sidebar{}
+  .side-panel{background:var(--panel); border:1px solid var(--line); border-top:2px solid var(--gold); padding:20px; margin-bottom:24px;}
+  .side-panel h5{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--paper-dim); margin-bottom:14px;}
+  .side-row{display:flex; justify-content:space-between; font-family:'IBM Plex Mono', monospace; font-size:12.5px; padding:8px 0; border-bottom:1px solid var(--line);}
+  .side-row:last-child{border-bottom:none;}
+  .side-row .up{color:var(--up);} .side-row .down{color:var(--down);}
+
+  .pagination{display:flex; gap:8px; margin-top:30px; font-family:'IBM Plex Mono', monospace; font-size:12px;}
+  .pagination a{border:1px solid var(--line); padding:8px 14px; color:var(--paper-dim);}
+  .pagination a.active{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+  .pagination a:hover{border-color:var(--gold);}
+
+  footer{border-top:1px solid var(--line); padding:30px 32px; max-width:1240px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--paper-dim);}
+
+  @media (max-width:900px){
+    nav{display:none;}
+    .layout{grid-template-columns:1fr;}
+    .list-item{grid-template-columns:80px 1fr;}
+  }
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="brand">
+    <div class="ingot"></div>
+    <div><h1>BULLION <em>WIRE</em></h1></div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="category.html">Spot &amp; Futures</a>
+    <a href="#">Central Banks</a>
+    <a href="#">Technicals</a>
+    <a href="#">Mining</a>
+  </nav>
+</div>
+
+<div class="page-head">
+  <div class="eyebrow">Section</div>
+  <h2>Spot &amp; Futures</h2>
+  <p>Daily coverage of gold spot pricing, COMEX futures positioning, and the contract flows shaping short-term direction.</p>
+</div>
+
+<div class="layout">
+  <div>
+    <div class="list-item">
+      <div class="thumb"></div>
+      <div>
+        <div class="tag">Futures</div>
+        <h4>Speculative net-long positioning climbs to five-month high on COMEX</h4>
+        <p>CFTC data shows managed money adding to bullish bets at the fastest pace since February, even as prices consolidate.</p>
+        <div class="meta">1 HOUR AGO</div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="thumb"></div>
+      <div>
+        <div class="tag">Spot Market</div>
+        <h4>London fix settles higher for third consecutive session</h4>
+        <p>Physical demand from Middle East buyers helped anchor the afternoon fix despite a choppy US morning session.</p>
+        <div class="meta">3 HOURS AGO</div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="thumb"></div>
+      <div>
+        <div class="tag">Futures</div>
+        <h4>Roll activity into December contract picks up ahead of first notice day</h4>
+        <p>Calendar spreads widened slightly as traders position ahead of the upcoming futures roll window.</p>
+        <div class="meta">6 HOURS AGO</div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="thumb"></div>
+      <div>
+        <div class="tag">Spot Market</div>
+        <h4>Asian session sees thin volumes ahead of key US data release</h4>
+        <p>Liquidity thinned out overnight as regional desks await Thursday's inflation figures for direction.</p>
+        <div class="meta">YESTERDAY</div>
+      </div>
+    </div>
+    <div class="list-item">
+      <div class="thumb"></div>
+      <div>
+        <div class="tag">Futures</div>
+        <h4>Gold-silver ratio widens as silver lags the latest rally</h4>
+        <p>The relative underperformance has revived debate among traders about a possible catch-up trade in silver.</p>
+        <div class="meta">2 DAYS AGO</div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <a class="active" href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next →</a>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="side-panel">
+      <h5>Market Snapshot</h5>
+      <div class="side-row"><span>XAU/USD</span><span class="up">2,431.80 ▲</span></div>
+      <div class="side-row"><span>XAG/USD</span><span class="down">29.14 ▼</span></div>
+      <div class="side-row"><span>DXY</span><span class="down">104.32 ▼</span></div>
+      <div class="side-row"><span>US10Y</span><span class="up">4.21% ▲</span></div>
+      <div class="side-row"><span>Gold/Silver</span><span class="up">82.87 ▲</span></div>
+    </div>
+    <div class="side-panel">
+      <h5>Most Read</h5>
+      <div class="side-row"><span>Central bank buying streak hits 14 quarters</span></div>
+      <div class="side-row"><span>$2,450 resistance in focus</span></div>
+      <div class="side-row"><span>ETF inflows accelerate</span></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Bullion Wire. Market data is illustrative and delayed.</span>
+  <span>Not investment advice.</span>
+</footer>
+
+</body>
+</html>

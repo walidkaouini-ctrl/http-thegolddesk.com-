@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BULLION WIRE — Gold Markets, Trading & Analysis</title>
+<style>
+  :root{
+    --ink:#0b0c0e;
+    --ink-2:#131519;
+    --panel:#17191d;
+    --line:#2a2c31;
+    --paper:#ede8dd;
+    --paper-dim:#a9a496;
+    --gold:#c9a227;
+    --gold-bright:#e8c455;
+    --bronze:#8c6b3f;
+    --up:#5fbf7a;
+    --down:#d9694f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'PT Serif', Georgia, serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+  body{font-family:'Newsreader', Georgia, serif;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- TICKER ---------- */
+  .ticker-wrap{
+    background:var(--gold);
+    color:var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:1px solid var(--line);
+  }
+  .ticker{
+    display:inline-block;
+    padding:7px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.02em;
+    animation:scroll 38s linear infinite;
+  }
+  .ticker span{margin:0 28px;}
+  .tk-up{color:#1f5f36;}
+  .tk-down{color:#7a2a1c;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    max-width:1240px;
+    margin:0 auto;
+    padding:30px 32px 22px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    border-bottom:2px solid var(--gold);
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .ingot{
+    width:38px; height:30px;
+    background:linear-gradient(135deg, var(--gold-bright), var(--bronze) 70%);
+    clip-path:polygon(8% 0, 92% 0, 100% 100%, 0% 100%);
+    flex-shrink:0;
+    box-shadow:0 0 0 1px rgba(0,0,0,.4) inset;
+  }
+  .brand h1{
+    font-size:34px;
+    letter-spacing:.01em;
+    font-weight:700;
+    color:var(--paper);
+    line-height:1;
+  }
+  .brand h1 em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .brand .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:.18em;
+    color:var(--paper-dim);
+    text-transform:uppercase;
+    margin-top:4px;
+  }
+  nav{
+    display:flex;
+    gap:26px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+  nav a:hover{color:var(--gold-bright);}
+  .datebar{
+    max-width:1240px;
+    margin:0 auto;
+    padding:10px 32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--paper-dim);
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid var(--line);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:1240px;
+    margin:0 auto;
+    padding:40px 32px 50px;
+    display:grid;
+    grid-template-columns:1.55fr 1fr;
+    gap:48px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .dot{width:6px; height:6px; border-radius:50%; background:var(--up); box-shadow:0 0 8px var(--up); animation:pulse 1.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+  .hero h2{
+    font-size:52px;
+    line-height:1.06;
+    font-weight:600;
+    color:var(--paper);
+    margin-bottom:18px;
+  }
+  .hero h2 .accent{color:var(--gold-bright); font-style:italic;}
+  .hero p.lede{
+    font-size:18px;
+    line-height:1.6;
+    color:#cfc9ba;
+    max-width:58ch;
+    margin-bottom:20px;
+  }
+  .byline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--paper-dim);
+    letter-spacing:.03em;
+  }
+
+  /* Spot price panel */
+  .spot-panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-top:3px solid var(--gold);
+    padding:24px;
+  }
+  .spot-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:6px;
+  }
+  .spot-head .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--paper-dim);
+  }
+  .spot-price{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:44px;
+    font-weight:600;
+    color:var(--paper);
+    margin:6px 0 2px;
+    letter-spacing:-.01em;
+  }
+  .spot-change{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px;
+    font-weight:600;
+  }
+  .spot-change.up{color:var(--up);}
+  .spot-change.down{color:var(--down);}
+  .spot-bars{
+    display:flex;
+    align-items:flex-end;
+    gap:3px;
+    height:56px;
+    margin:20px 0 16px;
+  }
+  .spot-bars i{
+    flex:1;
+    background:var(--bronze);
+    opacity:.55;
+    border-radius:1px 1px 0 0;
+  }
+  .spot-bars i.up{background:var(--up); opacity:.85;}
+  .spot-bars i.down{background:var(--down); opacity:.85;}
+  .spot-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  .spot-grid div{color:var(--paper-dim);}
+  .spot-grid b{color:var(--paper); display:block; font-size:13.5px; margin-top:2px;}
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{
+    max-width:1240px;
+    margin:0 auto;
+    padding:8px 32px 50px;
+  }
+  .sec-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:24px;
+  }
+  .sec-head h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--paper);
+    white-space:nowrap;
+  }
+  .sec-head .rule{height:1px; background:var(--line); width:100%;}
+
+  /* Story grid */
+  .stories{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+  }
+  .story{
+    padding:26px 24px;
+    border-bottom:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .story:nth-child(3n){border-right:none;}
+  .story .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+  .story h4{
+    font-size:21px;
+    font-weight:600;
+    line-height:1.28;
+    margin-bottom:10px;
+    color:var(--paper);
+  }
+  .story h4:hover{color:var(--gold-bright);}
+  .story p{
+    font-size:14.5px;
+    color:#b9b3a4;
+    line-height:1.55;
+    margin-bottom:12px;
+  }
+  .story .meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--paper-dim);
+  }
+
+  /* Table of contract data */
+  .contracts{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+  }
+  .contracts th{
+    text-align:left;
+    padding:10px 14px;
+    color:var(--paper-dim);
+    font-weight:500;
+    font-size:10.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border-bottom:1px solid var(--gold);
+  }
+  .contracts td{
+    padding:13px 14px;
+    border-bottom:1px solid var(--line);
+    color:var(--paper);
+  }
+  .contracts tr:hover td{background:rgba(201,162,39,.05);}
+  .contracts .up{color:var(--up);}
+  .contracts .down{color:var(--down);}
+
+  /* Two column: analysis + newsletter */
+  .lower{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 32px 60px;
+    display:grid;
+    grid-template-columns:1fr 340px;
+    gap:48px;
+  }
+  .analysis-item{
+    display:flex;
+    gap:18px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .analysis-item .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    width:24px;
+    flex-shrink:0;
+  }
+  .analysis-item h5{
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .analysis-item p{font-size:14px; color:#b9b3a4; line-height:1.5;}
+
+  .signup{
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:28px;
+  }
+  .signup h4{
+    font-size:20px;
+    margin-bottom:8px;
+  }
+  .signup p{
+    font-size:13.5px;
+    color:#b9b3a4;
+    line-height:1.5;
+    margin-bottom:18px;
+  }
+  .signup input{
+    width:100%;
+    background:var(--ink);
+    border:1px solid var(--line);
+    color:var(--paper);
+    padding:11px 12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    margin-bottom:10px;
+  }
+  .signup button{
+    width:100%;
+    background:var(--gold);
+    color:var(--ink);
+    border:none;
+    padding:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+  }
+  .signup button:hover{background:var(--gold-bright);}
+  .signup .fine{
+    font-size:10.5px;
+    color:var(--paper-dim);
+    margin-top:10px;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 32px;
+    max-width:1240px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--paper-dim);
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .stories{grid-template-columns:1fr;}
+    .story{border-right:none;}
+    .lower{grid-template-columns:1fr;}
+    .hero h2{font-size:36px;}
+    nav{display:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--gold-bright); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="tickerTrack"></div>
+</div>
+
+<div class="masthead">
+  <div class="brand">
+    <div class="ingot"></div>
+    <div>
+      <h1>BULLION <em>WIRE</em></h1>
+      <div class="tag">Gold Markets · Trading · Analysis</div>
+    </div>
+  </div>
+  <nav>
+    <a href="category.html">Spot &amp; Futures</a>
+    <a href="category.html">Central Banks</a>
+    <a href="category.html">Technicals</a>
+    <a href="category.html">ETFs</a>
+    <a href="category.html">Mining</a>
+    <a href="#">Newsletter</a>
+  </nav>
+</div>
+<div class="datebar">
+  <span id="dateStr">Sunday, July 19, 2026</span>
+  <span>COMEX · LBMA · SGE Session Data</span>
+</div>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> LIVE MARKET</div>
+    <h2><a href="article.html">Gold holds near record highs as traders weigh <span class="accent">rate-cut odds</span> against a firmer dollar</a></h2>
+    <p class="lede">Spot bullion is consolidating just below its recent peak as investors parse this week's central bank commentary. Options positioning suggests traders are bracing for a volatile break in either direction before month-end.</p>
+    <div class="byline">By the Markets Desk · Updated moments ago · 4 min read</div>
+  </div>
+
+  <div class="spot-panel">
+    <div class="spot-head">
+      <span class="label">XAU/USD · Spot</span>
+      <span class="label mono" id="clock">--:--:-- UTC</span>
+    </div>
+    <div class="spot-price" id="spotPrice">$2,431.80</div>
+    <div class="spot-change up" id="spotChange">▲ 12.40 (0.51%) today</div>
+    <div class="spot-bars" id="spotBars"></div>
+    <div class="spot-grid">
+      <div>Open <b>$2,419.40</b></div>
+      <div>Prev. Close <b>$2,419.40</b></div>
+      <div>Day Range <b>$2,411 – $2,438</b></div>
+      <div>52-Wk Range <b>$1,984 – $2,438</b></div>
+    </div>
+  </div>
+</section>
+
+<div class="section">
+  <div class="sec-head"><h3>Top Stories</h3><div class="rule"></div></div>
+  <div class="stories">
+    <div class="story">
+      <div class="tag">Central Banks</div>
+      <h4>Emerging-market central banks add to gold reserves for 14th straight quarter</h4>
+      <p>Official-sector buying remains a structural floor under prices, with reserve managers citing diversification away from the dollar.</p>
+      <div class="meta">2 HOURS AGO</div>
+    </div>
+    <div class="story">
+      <div class="tag">Technicals</div>
+      <h4>Chart watchers eye $2,450 resistance as RSI flags overbought conditions</h4>
+      <p>A clean break above the June high could open the door to a fresh leg higher, though momentum indicators urge caution.</p>
+      <div class="meta">3 HOURS AGO</div>
+    </div>
+    <div class="story">
+      <div class="tag">ETFs</div>
+      <h4>Gold-backed ETF holdings post largest weekly inflow since March</h4>
+      <p>Institutional flows into physically-backed funds accelerated as real yields softened across the curve.</p>
+      <div class="meta">5 HOURS AGO</div>
+    </div>
+    <div class="story">
+      <div class="tag">Mining</div>
+      <h4>Major producers guide toward higher all-in sustaining costs for 2026</h4>
+      <p>Rising energy and labor costs are squeezing margins even as miners benefit from elevated bullion prices.</p>
+      <div class="meta">YESTERDAY</div>
+    </div>
+    <div class="story">
+      <div class="tag">Macro</div>
+      <h4>Dollar index steadies ahead of key inflation print due this week</h4>
+      <p>A hotter-than-expected reading could pressure gold in the near term by lifting real rate expectations.</p>
+      <div class="meta">YESTERDAY</div>
+    </div>
+    <div class="story">
+      <div class="tag">Physical Market</div>
+      <h4>Indian jewelry demand softens as local premiums push buyers to the sidelines</h4>
+      <p>Import duty changes and a firmer rupee are reshaping seasonal buying patterns ahead of festival season.</p>
+      <div class="meta">2 DAYS AGO</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-head"><h3>Futures &amp; Related Contracts</h3><div class="rule"></div></div>
+  <table class="contracts">
+    <thead>
+      <tr><th>Contract</th><th>Last</th><th>Change</th><th>% Chg</th><th>High</th><th>Low</th></tr>
+    </thead>
+    <tbody id="contractsBody"></tbody>
+  </table>
+</div>
+
+<div class="lower">
+  <div>
+    <div class="sec-head"><h3>Analyst Take</h3><div class="rule"></div></div>
+    <div class="analysis-item">
+      <div class="num">01</div>
+      <div><h5>Real yields remain the key swing factor</h5><p>With the Fed's next move still data-dependent, moves in 10-year TIPS yields are likely to stay the dominant short-term driver for bullion.</p></div>
+    </div>
+    <div class="analysis-item">
+      <div class="num">02</div>
+      <div><h5>Geopolitical hedging demand hasn't faded</h5><p>Options desks report sustained appetite for downside dollar hedges expressed through gold calls, a pattern typical of late-cycle uncertainty.</p></div>
+    </div>
+    <div class="analysis-item">
+      <div class="num">03</div>
+      <div><h5>Seasonality favors a quiet stretch into August</h5><p>Trading volumes historically thin over the coming weeks, which can exaggerate moves on comparatively light news flow.</p></div>
+    </div>
+  </div>
+
+  <div class="signup">
+    <h4>The Morning Fix</h4>
+    <p>A concise daily briefing on spot prices, futures positioning, and the headlines moving gold — delivered before the London open.</p>
+    <input type="email" placeholder="you@example.com">
+    <button type="button">Subscribe</button>
+    <div class="fine">Free daily briefing. Unsubscribe anytime.</div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Bullion Wire. Market data is illustrative and delayed.</span>
+  <span>Not investment advice.</span>
+</footer>
+
+<script>
+  // Clock
+  function tick(){
+    const d = new Date();
+    document.getElementById('clock').textContent = d.toUTCString().split(' ')[4] + ' UTC';
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Simulated live spot price (random walk for visual effect only)
+  let price = 2431.80;
+  const base = 2419.40;
+  const priceEl = document.getElementById('spotPrice');
+  const changeEl = document.getElementById('spotChange');
+  function updatePrice(){
+    price += (Math.random() - 0.5) * 1.4;
+    const diff = price - base;
+    const pct = (diff / base * 100).toFixed(2);
+    priceEl.textContent = '$' + price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    if(diff >= 0){
+      changeEl.textContent = '▲ ' + diff.toFixed(2) + ' (' + pct + '%) today';
+      changeEl.className = 'spot-change up';
+    } else {
+      changeEl.textContent = '▼ ' + Math.abs(diff).toFixed(2) + ' (' + pct + '%) today';
+      changeEl.className = 'spot-change down';
+    }
+  }
+  setInterval(updatePrice, 2500);
+
+  // Mini bar sparkline
+  const barsEl = document.getElementById('spotBars');
+  let barVals = Array.from({length: 28}, () => Math.random());
+  function renderBars(){
+    barVals.push(Math.random());
+    barVals.shift();
+    barsEl.innerHTML = '';
+    barVals.forEach((v,i) => {
+      const bar = document.createElement('i');
+      bar.style.height = (18 + v*38) + 'px';
+      if(i>0) bar.className = v > barVals[i-1] ? 'up' : 'down';
+      barsEl.appendChild(bar);
+    });
+  }
+  renderBars(); setInterval(renderBars, 2500);
+
+  // Ticker tape content
+  const tickerItems = [
+    ['XAU/USD','2,431.80','+0.51%',true],
+    ['XAG/USD','29.14','-0.22%',false],
+    ['GC=F Comex','2,438.20','+0.44%',true],
+    ['DXY','104.32','-0.18%',false],
+    ['US10Y','4.21%','+0.03',true],
+    ['XAU/EUR','2,238.60','+0.61%',true],
+    ['Platinum','982.40','-0.15%',false],
+    ['SPDR Gold (GLD)','226.14','+0.49%',true],
+  ];
+  const track = document.getElementById('tickerTrack');
+  function buildTicker(){
+    let html = '';
+    for(let r=0;r<2;r++){
+      tickerItems.forEach(([name,val,chg,up])=>{
+        html += `<span>${name} <b>${val}</b> <span class="${up?'tk-up':'tk-down'}">${chg}</span></span>`;
+      });
+    }
+    track.innerHTML = html;
+  }
+  buildTicker();
+
+  // Contracts table
+  const contracts = [
+    ['Gold Aug \\'26 (GC)','2,438.20','+10.70','+0.44%','2,441.90','2,414.30',true],
+    ['Gold Dec \\'26 (GC)','2,451.60','+11.20','+0.46%','2,455.10','2,428.70',true],
+    ['Silver Sep \\'26 (SI)','29.41','-0.06','-0.20%','29.68','29.12',false],
+    ['Micro Gold (MGC)','2,437.90','+10.40','+0.43%','2,441.60','2,414.00',true],
+    ['Gold/Silver Ratio','82.87','+0.35','+0.42%','83.10','82.30',true],
+  ];
+  const tbody = document.getElementById('contractsBody');
+  contracts.forEach(([name,last,chg,pct,hi,lo,up])=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${name}</td><td>${last}</td><td class="${up?'up':'down'}">${chg}</td><td class="${up?'up':'down'}">${pct}</td><td>${hi}</td><td>${lo}</td>`;
+    tbody.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>
